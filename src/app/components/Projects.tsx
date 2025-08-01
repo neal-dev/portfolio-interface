@@ -75,8 +75,8 @@ export default function Projects() {
 				"PostgreSQL",
 			],
 			githubFrontend: "https://github.com/neal-dev/weather-interface",
-			liveUrl: "#",
-			isDemo: false,
+			liveUrl: "https://weather-interface-theta.vercel.app/weather",
+			isDemo: true,
 			featured: true,
 			highlights: [
 				"Integrated with API from OpenWeatherMap",
@@ -197,6 +197,7 @@ export default function Projects() {
 											{project.isDemo && (
 												<div className="flex justify-end">
 													<a
+														target="_blank"
 														href={project.liveUrl}
 														className="text-color-text-primary font-medium text-sm">
 														Live Demo →
