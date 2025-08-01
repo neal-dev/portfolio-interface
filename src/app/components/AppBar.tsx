@@ -126,7 +126,7 @@ const AppBar = () => {
 			<div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border shadow-sm">
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex items-center justify-between px-6 py-2">
-					<div className="flex space-x-1">
+					<div className="flex space-x-1 border-r border-border pr-4">
 						{navItems.map((item) => (
 							<button
 								key={item.label}
@@ -141,7 +141,7 @@ const AppBar = () => {
 						))}
 					</div>
 
-					<div className="flex-shrink-0 border-l border-border pl-4">
+					<div className="flex-shrink-0 pl-4">
 						<button
 							onClick={switchTheme}
 							className="p-2 rounded-md text-color-text-primary hover:bg-accent transition-colors"
