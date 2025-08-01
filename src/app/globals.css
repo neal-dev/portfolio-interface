@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--font-size: 14px;
+}
+
+[data-theme="dark"] {
+	--primary: #ffffff;
+	--secondary: #54b99f;
+	--background: #121212;
+	--foreground: #282828;
+	--muted-foreground: #cbd5e0;
+	--text-color: #ffffff;
+	--text-color-contrast: #121212;
+	--text-color-secondary: #cbd5e0;
+}
+
+[data-theme="light"] {
+	--primary: #121212;
+	--secondary: #bdebdd;
+	--foreground: #f2f2f2bb;
+	--muted-foreground: #718096;
+	--background: #ffffff;
+	--text-color: #121212;
+	--text-color-contrast: #ffffff;
+	--text-color-secondary: #718096;
+}
+
+@keyframes fadeInScale {
+	0% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.animate-fadeInScale {
+	animation: fadeInScale 1.5s ease-in-out;
+}
