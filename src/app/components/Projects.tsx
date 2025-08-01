@@ -1,4 +1,4 @@
-import BuildIcon from "@mui/icons-material/Build";
+import { cn } from "@/lib/utils";
 
 export default function Projects() {
 	const projects = [
@@ -118,21 +118,20 @@ export default function Projects() {
 
 								<div className="p-6 flex flex-col flex-grow">
 									<div className="flex items-center justify-between mb-3">
-										<h3 className="text-xl font-medium text-color-text-primary">
+										<h3 className="text-xl font-medium text-color-text-primary max-w-[200px] md:max-w-full">
 											{project.title}
 										</h3>
 										<div className="flex items-center gap-2">
-											{project.isInProgress && (
-												<span className="bg-green-500 text-color-text-contrast px-2 py-1 rounded text-xs flex items-center gap-1">
-													<div className="w-4 h-4">
-														<BuildIcon />
-													</div>
-													In Progress
-												</span>
-											)}
-
-											<span className="bg-color-text-primary text-color-text-contrast px-2 py-1 rounded text-xs">
-												Featured
+											<span
+												className={cn(
+													"px-2 py-1 rounded text-xs text-color-text-contrast w-fit",
+													project.isInProgress
+														? "bg-green-500 "
+														: "bg-color-text-primary"
+												)}>
+												{project.isInProgress
+													? "In Progress"
+													: "Featured"}
 											</span>
 										</div>
 									</div>

@@ -65,7 +65,7 @@ export const skillCategories: SkillCategory[] = [
 			},
 			{
 				name: "Golang",
-				experience: "6 months",
+				experience: "3 months",
 				proficiency: "Beginner",
 			},
 			{

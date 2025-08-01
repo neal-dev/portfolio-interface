@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
@@ -45,6 +47,7 @@ const navItems: LinkItem[] = [
 
 const AppBar = () => {
 	const [activeSection, setActiveSection] = useState("Home");
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [defaultDark] = useState(false);
 	const [theme, setTheme] = useLocalStorage(
 		"theme",
@@ -110,19 +113,57 @@ const AppBar = () => {
 		if (section) {
 			section.scrollIntoView({ behavior: "smooth" });
 			setActiveSection(label);
+			setIsMobileMenuOpen(false); // Close mobile menu after navigation
 		}
 	};
 
+	const toggleMobileMenu = () => {
+		setIsMobileMenuOpen(!isMobileMenuOpen);
+	};
+
 	return (
-		<nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-			<div className="bg-card/80 backdrop-blur-sm rounded-lg px-6 py-1 border border-border shadow-sm">
-				<div className="flex items-center space-x-4">
-					<div className="flex space-x-1 max-w-full overflow-x-auto">
+		<nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
+			<div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border shadow-sm">
+				{/* Desktop Navigation */}
+				<div className="hidden md:flex items-center justify-between px-6 py-2">
+					<div className="flex space-x-1">
 						{navItems.map((item) => (
 							<button
 								key={item.label}
 								onClick={() => handleScroll(item.link, item.label)}
 								className={`px-3 py-2 rounded-md transition-all duration-200 text-sm whitespace-nowrap ${
+									activeSection === item.label
+										? "bg-primary text-color-text-contrast"
+										: "text-color-text-primary hover:bg-accent"
+								}`}>
+								{item.label}
+							</button>
+						))}
+					</div>
+
+					<div className="flex-shrink-0 border-l border-border pl-4">
+						<button
+							onClick={switchTheme}
+							className="p-2 rounded-md text-color-text-primary hover:bg-accent transition-colors"
+							title="Toggle theme">
+							{theme === "light" ? (
+								<LightModeIcon fontSize="small" />
+							) : (
+								<NightsStayIcon fontSize="small" />
+							)}
+							<span className="sr-only">Toggle theme</span>
+						</button>
+					</div>
+				</div>
+
+				{/* Mobile Navigation */}
+				<div className="md:hidden flex items-center justify-between px-4 py-2">
+					<div className="flex items-center space-x-2">
+						{navItems.slice(0, 2).map((item) => (
+							<button
+								key={item.label}
+								onClick={() => handleScroll(item.link, item.label)}
+								className={`px-2 py-1 rounded text-xs ${
 									activeSection === item.label
 										? "bg-primary text-color-text-contrast"
 										: "text-color-text-primary"
@@ -132,27 +173,50 @@ const AppBar = () => {
 						))}
 					</div>
 
-					<div className="flex-shrink-0 border-l border-border pl-4">
+					<div className="flex items-center space-x-2">
 						<button
-							className="p-2 rounded-md text-color-text-primary"
+							onClick={switchTheme}
+							className="p-2 rounded-md text-color-text-primary hover:bg-accent transition-colors"
 							title="Toggle theme">
-							{theme == "light" ? (
-								<LightModeIcon
-									fontSize="small"
-									onClick={switchTheme}
-									className="hover:cursor-pointer"
-								/>
+							{theme === "light" ? (
+								<LightModeIcon fontSize="small" />
 							) : (
-								<NightsStayIcon
-									fontSize="small"
-									onClick={switchTheme}
-									className="hover:cursor-pointer"
-								/>
+								<NightsStayIcon fontSize="small" />
 							)}
-							<span className="sr-only">Toggle theme</span>
+						</button>
+
+						<button
+							onClick={toggleMobileMenu}
+							className="p-2 rounded-md text-color-text-primary hover:bg-accent transition-colors"
+							title="Toggle menu">
+							{isMobileMenuOpen ? (
+								<CloseIcon fontSize="small" />
+							) : (
+								<MenuIcon fontSize="small" />
+							)}
 						</button>
 					</div>
 				</div>
+
+				{/* Mobile Menu Dropdown */}
+				{isMobileMenuOpen && (
+					<div className="md:hidden border-t border-border bg-card/95 backdrop-blur-sm">
+						<div className="px-4 py-2 space-y-1">
+							{navItems.slice(2).map((item) => (
+								<button
+									key={item.label}
+									onClick={() => handleScroll(item.link, item.label)}
+									className={`w-full text-left px-3 py-2 rounded-md transition-all duration-200 text-sm ${
+										activeSection === item.label
+											? "bg-primary text-color-text-contrast"
+											: "text-color-text-primary hover:bg-accent"
+									}`}>
+									{item.label}
+								</button>
+							))}
+						</div>
+					</div>
+				)}
 			</div>
 		</nav>
 	);
