@@ -45,7 +45,7 @@ const navItems: LinkItem[] = [
 
 const AppBar = () => {
 	const [activeSection, setActiveSection] = useState("Home");
-	const [defaultDark, setDefaultDark] = useState(false);
+	const [defaultDark] = useState(false);
 	const [theme, setTheme] = useLocalStorage(
 		"theme",
 		defaultDark ? "dark" : "light"

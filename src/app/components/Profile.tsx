@@ -17,11 +17,11 @@ export default function Profile() {
 									Background
 								</h3>
 								<p className="text-muted-foreground leading-relaxed mb-4">
-									I'm a passionate Software Developer with 1+ years of
-									experience building modern web applications and
-									blockchain solutions. My journey began with a
-									Computer Engineering degree, and I've targeted in
-									full-stack developer with expertise in React,
+									I&apos;m a passionate Software Developer with 1+
+									years of experience building modern web applications
+									and blockchain solutions. My journey began with a
+									Computer Engineering degree, and I&apos;ve targeted
+									in full-stack developer with expertise in React,
 									TypeScript, and Web3 technologies.
 								</p>
 							</div>

@@ -1,6 +1,4 @@
-import Image from "next/image";
 import React from "react";
-import Contact from "./Contact";
 import { Phone } from "@mui/icons-material";
 
 const About = () => {
@@ -19,7 +17,7 @@ const About = () => {
 
 				<div className="space-y-6">
 					<div>
-						<p className="text-muted-foreground mb-2">Hi, I'm</p>
+						<p className="text-muted-foreground mb-2">Hi, I&apos;m</p>
 						<h1 className="text-4xl md:text-6xl font-medium text-color-text-primary mb-4">
 							Thanapat Pongpipat
 						</h1>

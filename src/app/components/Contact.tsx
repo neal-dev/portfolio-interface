@@ -4,7 +4,6 @@ import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Link from "next/link";
 import "../../app/globals.css";
-import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface IContact {
 	icon: JSX.Element;
