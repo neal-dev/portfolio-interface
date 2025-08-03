@@ -17,12 +17,13 @@ export default function Profile() {
 									Background
 								</h3>
 								<p className="text-muted-foreground leading-relaxed mb-4">
-									I&apos;m a passionate Software Developer with 1+
-									years of experience building modern web applications
-									and blockchain solutions. My journey began with a
-									Computer Engineering degree, and I&apos;ve targeted
-									in full-stack developer with expertise in React,
-									TypeScript, and Web3 technologies.
+									I&apos;m a passionate Software Developer with over 1
+									year of experience specializing in modern web
+									applications and blockchain solutions. My journey
+									started with a degree in Computer Engineering, and
+									I&apos;ve since honed my skills as a frontend
+									developer, focusing on React, TypeScript, and
+									Blockchain technologies.
 								</p>
 							</div>
 
@@ -59,7 +60,7 @@ export default function Profile() {
 										<span className="text-primary mr-3 mt-1">•</span>
 										<span>
 											Optimize application performance and implement
-											testing strategies
+											unit testing
 										</span>
 									</li>
 									<li className="flex items-start">
